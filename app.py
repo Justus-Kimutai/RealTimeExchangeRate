@@ -16,6 +16,8 @@ api_data = {'Realtime Currency Exchange Rate': {
 def fetch_Api(api_data):
     country_1 = api_data['Realtime Currency Exchange Rate']['2. From_Currency Name']
     country_2 = api_data['Realtime Currency Exchange Rate']['4. To_Currency Name']
+    exchange_rate = api_data['Realtime Currency Exchange Rate']['5. Exchange Rate']
+    exchange_rate_amount['text'] = f'{exchange_rate} {api_data['Realtime Currency Exchange Rate']['3. To_Currency Code']}'
 
     results_section['text'] = f'{country_1 }  to {country_2}'
 
@@ -32,8 +34,6 @@ country_section.columnconfigure((0,1),weight=1,uniform='a')
 country_section.rowconfigure((0,1),weight=1,uniform='a')
 
 
-# country_one_var = tk.StringVar(value='Country One')
-# country_two_var = tk.StringVar(value='Country two')
 country_one = ttk.Label(country_section,text='Country One',background='#FF8A00',font='Cardi 12 bold')
 country_two = ttk.Label(country_section,text='Country Two',background='#FF8A00',font='Cardi 12 bold')
 
@@ -45,8 +45,8 @@ call_to_action = tk.Frame(frame,background='#FF8A00')
 # fetch_Api = tk.StringVar()
 submit_btn = tk.Button(call_to_action,text='Send',background='#00C6FF',font='Cardi 12',command=lambda:fetch_Api(api_data))
 
-results_section = ttk.Label(call_to_action, text='Country one to country two',background='#FF8A00',font='Cardi 15 bold')
-exchange_rate_amount = ttk.Label(call_to_action,text='129.48098',background='#FF8A00',font='Cardi 15 bold')
+results_section = ttk.Label(call_to_action, text='',background='#FF8A00',font='Cardi 15 bold')
+exchange_rate_amount = ttk.Label(call_to_action,text='',background='#FF8A00',font='Cardi 15 bold')
 
 country_one.grid(row=0,column=0,sticky='nwes',ipady=10)
 country_two.grid(row=1,column=0,sticky='nwes',ipady=10)
